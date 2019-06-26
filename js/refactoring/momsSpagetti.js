@@ -112,3 +112,30 @@ function momsSpagetti(lyrics) {
 }
 
 // REFACTORED VERSION HERE //
+
+// Promise 'intro' to print if fufill
+const intro = () =>{
+return Promise.resolve(console.log(lyrics.intro + "\n"))
+}
+
+// Promise 'multiple chorus' to print if fufill
+const chorus = (num) =>{
+return Promise.resolve(console.log(lyrics.choruses[num].chorus + "\n"),console.log((lyrics.refrain + "\n").repeat(2)))
+}
+
+// Promise 'ending' to print if fufill
+const end = () =>{
+return Promise.resolve(console.log(lyrics.ending))
+}
+
+// if my promises are true return them all! //
+const momsSpagetti = () =>{
+return intro().then(chorus(0)).then(chorus(1)).then(chorus(2)).then(end)
+}
+
+// setting promise condition that if it's true then return promise fufilled
+const myPromise = () =>{
+return Promise.resolve(true)
+}
+
+myPromise().then(momsSpagetti)
